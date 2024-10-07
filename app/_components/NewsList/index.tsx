@@ -1,11 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from './index.module.css'
 
-import Category from '@/app/_components/Category'
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
-import Date from '@/app/_components/Date'
-import type { News } from '@/app/_libs/microcms'
+import NewsCategory from '@/_components/NewsCategory'
+import NewsDate from '@/_components/NewsDate'
+import type { News } from '@/_libs/microcms'
 
 type Props = {
   news: News[]
@@ -19,7 +19,7 @@ export default function NewsList({ news }: Props) {
     <ul>
       {news.map((article) => (
         <li className={styles.list} key={article.id}>
-          <div className={styles.link}>
+          <Link className={styles.link} href={`/news/${article.id}`}>
             <Image
               alt="No Image"
               className={styles.image}
@@ -30,11 +30,11 @@ export default function NewsList({ news }: Props) {
             <dl className={styles.content}>
               <dt className={styles.title}>{article.title}</dt>
               <dd className={styles.meta}>
-                <Category category={article.category} />
-                <Date date={article.publishedAt ?? article.createdAt} />
+                <NewsCategory category={article.category} />
+                <NewsDate date={article.publishedAt ?? article.createdAt} />
               </dd>
             </dl>
-          </div>
+          </Link>
         </li>
       ))}
     </ul>

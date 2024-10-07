@@ -6,8 +6,7 @@ type Props = {
   date: string
 }
 
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
-export default function Date({ date }: Props) {
+export default function NewsDate({ date }: Props) {
   return (
     <span className={styles.date}>
       <Image alt="" height={16} loading="eager" src="/clock.svg" width={16} />

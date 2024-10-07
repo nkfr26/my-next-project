@@ -1,11 +1,14 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from './index.module.css'
+
+import Menu from '@/_components/Menu'
 
 export default function Header() {
   return (
     <header className={styles.header}>
-      <a className={styles.logoLink} href="/">
+      <Link className={styles.logoLink} href="/">
         <Image
           alt="SIMPLE"
           className={styles.logo}
@@ -14,7 +17,8 @@ export default function Header() {
           src="/logo.svg"
           width={348}
         />
-      </a>
+      </Link>
+      <Menu />
     </header>
   )
 }
